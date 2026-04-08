@@ -4,5 +4,12 @@
       "source": "/certificate-details/:id",
       "destination": "/certificate-details.html"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "https://datavalley-certificate.vercel.app/admin/certificates",
+      "permanent": true
+    }
   ]
 }
