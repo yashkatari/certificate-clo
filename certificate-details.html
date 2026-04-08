@@ -4,16 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Certificate Details - Datavalley</title>
-
     <style>
         :root {
             --bg-top-left: #003282; 
             --bg-bottom-right: #000000;
             --accent-gold: yellow;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-
         body {
             font-size: 15px;
             background: linear-gradient(to bottom right, var(--bg-top-left), var(--bg-bottom-right));
@@ -25,10 +22,7 @@
             padding: 10px 20px;
             color: white;
         }
-
         .container { width: 100%; max-width: 800px; }
-
-        /* HEADER */
         .header {
             position: absolute;
             top: 0; left: 0; width: 100%;
@@ -38,9 +32,7 @@
             align-items: center;
             z-index: 10;
         }
-
         .logo { height: 62px; }
-
         .go-back-btn {
             background-color: var(--accent-gold);
             color: #111;
@@ -50,8 +42,6 @@
             font-weight: bold;
             font-size: 14px;
         }
-
-        /* CARD */
         .card {
             border: 1.5px solid rgba(255, 255, 255, 0.6);
             border-radius: 12px;
@@ -59,23 +49,18 @@
             text-align: center;
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(5px);
-            margin-top: 130px; /* Space for absolute header */
+            margin-top: 130px;
         }
-
         h1 { color: rgb(163, 6, 6); font-size: 34px; margin-bottom: 20px; }
         .award-label { color: var(--accent-gold); font-weight: 600; font-size: 22px; margin-bottom: 4px; }
         .student-name { font-size: 34px; font-weight: bold; margin: 8px 0 18px; }
         .detail-row { margin-bottom: 6px; font-size: 18px; line-height: 1.5; }
         .label { color: var(--accent-gold); font-weight: 600; }
-
-        /* QR SECTION */
         .qr-section { margin-top: 25px; display: flex; flex-direction: column; align-items: center; }
         .qr-wrapper { display: flex; flex-direction: column; align-items: center; }
         .qr-label { color: var(--accent-gold); font-weight: bold; margin-bottom: 12px; }
         .qr-box { width: 130px; height: 130px; background: white; padding: 6px; }
         .qr-box img { width: 100%; height: 100%; }
-
-        /* BUTTONS */
         .btn-container { display: flex; justify-content: center; gap: 12px; margin-top: 10px; }
         .btn {
             width: 180px; height: 40px; border-radius: 8px;
@@ -84,14 +69,10 @@
         }
         .btn-green { background-color: #03b344; }
         .btn-blue { background-color: #3b82f6; }
-
-        /* DESKTOP SPECIFIC */
         @media (min-width: 768px) {
             .qr-section { flex-direction: row; gap: 30px; justify-content: center; align-items: center; }
             .btn-container { margin-top: 25px; }
         }
-
-        /* MOBILE SPECIFIC */
         @media (max-width: 600px) {
             .header { justify-content: center; padding: 20px; }
             .go-back-btn { display: none; }
@@ -103,17 +84,15 @@
 <body>
 
 <div class="header">
-    <img src="logo_d.png" alt="DATAVALLEY" class="logo">
+    <img src="/logo_d.png" alt="DATAVALLEY" class="logo">
     <a href="https://datavalley-certificate.vercel.app/admin/certificates" class="go-back-btn">⬅ Go Back</a>
 </div>
 
 <div class="container" id="mainContent">
     <div class="card">
         <h1>Certificate Details</h1>
-        
         <div class="award-label">Awarded to:</div>
         <div class="student-name" id="studentName">Loading...</div>
-
         <div class="detail-row"><span class="label">Course:</span> <span id="courseName">---</span></div>
         <div class="detail-row"><span class="label">Branch:</span> <span id="branch">---</span></div>
         <div class="detail-row"><span class="label">College:</span> <span id="college">---</span></div>
@@ -121,7 +100,6 @@
         <div class="detail-row"><span class="label">Duration:</span> <span id="duration">---</span></div>
         <div class="detail-row"><span class="label">Issued Date:</span> <span id="issuedDate">---</span></div>
         <div class="detail-row"><span class="label">Certificate ID:</span> <span id="certIdDisplay">---</span></div>
-
         <div class="qr-section">
             <div class="qr-wrapper">
                 <div class="qr-label">Scan QR Code:</div>
@@ -129,7 +107,6 @@
                     <img id="qrCodeImg" src="" alt="QR Code">
                 </div>
             </div>
-
             <div class="btn-container">
                 <a href="#" id="viewBtn" target="_blank" class="btn btn-green">📄 View Certificate</a>
                 <a href="#" id="downloadBtn" download class="btn btn-blue">⬇ Download PDF</a>
@@ -139,7 +116,6 @@
 </div>
 
 <script>
-    // 1. DATABASE: Store your unique students here
     const certificateDatabase = {
         "DV-8cdaf853": {
             name: "Patnala Pavan Kumar",
@@ -149,7 +125,7 @@
             university: "JNTU Kakinada",
             duration: "360 Hours",
             date: "25/03/2026",
-            pdf: "pavan_kumar.pdf"
+            pdf: "/pdfs/pavan_kumar.pdf"
         },
         "DV-11223344": {
             name: "John Smith",
@@ -159,29 +135,16 @@
             university: "JNTU Hyderabad",
             duration: "400 Hours",
             date: "10/04/2026",
-            pdf: "john_smith.pdf"
-        },
-        "DV-55667788": {
-            name: "Anjali Rao",
-            course: "Cyber Security",
-            branch: "CSE - Cyber",
-            college: "VNR Vignana Jyothi",
-            university: "JNTU Kakinada",
-            duration: "300 Hours",
-            date: "15/05/2026",
-            pdf: "anjali_rao.pdf"
+            pdf: "/pdfs/john_smith.pdf"
         }
     };
 
-    // 2. GET THE ID FROM THE URL (?id=DV-xxxx)
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get('id');
+    // Extract ID from path: /certificate-details/DV-8cdaf853 -> DV-8cdaf853
+    const pathSegments = window.location.pathname.split('/');
+    const id = pathSegments[pathSegments.length - 1];
 
-    // 3. FILL THE DATA
     if (id && certificateDatabase[id]) {
         const student = certificateDatabase[id];
-
-        // Update Text Content
         document.getElementById('studentName').innerText = student.name;
         document.getElementById('courseName').innerText = student.course;
         document.getElementById('branch').innerText = student.branch;
@@ -190,27 +153,22 @@
         document.getElementById('duration').innerText = student.duration;
         document.getElementById('issuedDate').innerText = student.date;
         document.getElementById('certIdDisplay').innerText = id;
-
-        // Update PDF Links
         document.getElementById('viewBtn').href = student.pdf;
         document.getElementById('downloadBtn').href = student.pdf;
-
-        // Update QR Code Image (Automatically generates a QR linking to the current student's URL)
-        const currentURL = window.location.href;
+        
+        // QR Code points to the current clean URL
+        const currentURL = window.location.origin + window.location.pathname;
         document.getElementById('qrCodeImg').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(currentURL)}`;
-
     } else {
-        // Handle Error: If ID is missing or wrong
         document.getElementById('mainContent').innerHTML = `
             <div class="card" style="margin-top:200px;">
                 <h1 style="color:yellow;">Invalid Certificate</h1>
-                <p>Please check the Certificate ID or scan a valid QR code.</p>
+                <p>The ID "${id}" was not found.</p>
                 <br>
                 <a href="https://datavalley-certificate.vercel.app/admin/certificates" style="color:white;">Go back to Dashboard</a>
             </div>
         `;
     }
 </script>
-
 </body>
 </html>
